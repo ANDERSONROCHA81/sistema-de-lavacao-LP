@@ -4,7 +4,7 @@
 *          Marcos Antônio Custódio
 * */
 
-public class Main {
+public class SistemaDeLavacao {
     public static void main(String[] args) {
 
         //Declaração das variáveis
