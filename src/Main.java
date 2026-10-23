@@ -1,5 +1,13 @@
+/*
+* Autores: Anderson Bezerra da Rocha
+*          Denise Pires de Souza
+*          Marcos Antônio Custódio
+* */
+
 public class Main {
     public static void main(String[] args) {
+
+        //Declaração das variáveis
 
         String nome;
         String tipoVeiculo = "";
@@ -17,11 +25,17 @@ public class Main {
         String servicoComMaiorQuantidade = "";
         double valorTotalArrecadado = 0;
 
+        //Entrada da quantidade de atendimentos que serão processados
+
         int qtdAtendimentos = Integer.parseInt(IO.readln("Informe a quantidade de atendimentos que serão processados: "));
+
+        //Estrutura de repetição for para auxiliar na entrada dos dados dos usuários do sistema
 
         for (int i = 1; i <= qtdAtendimentos; i++) {
             System.out.printf("Informe o nome do %dº cliente: ", i);
             nome = IO.readln();
+
+            //Estrutura de repetição do-while para receber e validar o tipo de veículo
 
             do {
                 System.out.println("Informe o tipo do veículo, escolhendo uma das opções abaixo: ");
@@ -48,6 +62,8 @@ public class Main {
                 }
             } while (opcaoTipo < 1 || opcaoTipo > 3);
 
+            //Estrutura de repetição do-while para receber e validar o tipo de serviço
+
             do {
                 System.out.println("Informe o serviço a ser realizado, escolhendo uma das opções abaixo: ");
                 System.out.println("1 - Lavação externa");
@@ -73,6 +89,8 @@ public class Main {
                 }
             } while (opcaoServico < 1 || opcaoServico > 3);
 
+            //Utilização de if-else para calcular o valor do serviço escolhido por cada cliente
+
             if (opcaoTipo == 1 && opcaoServico == 1) {
                 valorASerPago = 80;
             } else if (opcaoTipo == 1 && opcaoServico == 2) {
@@ -93,23 +111,36 @@ public class Main {
                 valorASerPago = 160;
             }
 
+            //Cálculo do valor total arrecadado de todos os atendimentos
+
             valorTotalArrecadado += valorASerPago;
+
+            //Imprime na tela os dados de cada cliente, junto com os serviços utilizados por cada um
+
             System.out.printf("Cliente: %s%nTipo de veículo: %s%nServiço contratado: %s%nValor a ser pago: R$ %.2f%n%n", nome, tipoVeiculo, servico, valorASerPago);
         }
+
+        //Imprime na tela os percentuais dos atendimentos pelo tipo do veículo
 
         System.out.println("##################################################\n");
         System.out.printf("Percentuais dos atendimentos pelo tipo do veículo:%nVeículo tipo 1: %.2f%s%nVeículo tipo 2: %.2f%s%nVeículo tipo 3: %.2f%s%n",
                 ((double) qtdVeiculoTipo1 / qtdAtendimentos) * 100, "%", ((double) qtdVeiculoTipo2 / qtdAtendimentos) * 100, "%", ((double) qtdVeiculoTipo3 / qtdAtendimentos) * 100, "%");
         System.out.println("\n##################################################");
 
+        //Imprime na tela os percentuais dos atendimentos pelo serviço
+
         System.out.println("##################################################\n");
         System.out.printf("Percentuais dos atendimentos pelo serviço:%nLavação externa: %.2f%s%nLavação externa + interna: %.2f%s%nLavação externa + interna + cera: %.2f%s%n",
                 ((double) qtdServicoTipo1 / qtdAtendimentos) * 100, "%", ((double) qtdServicoTipo2 / qtdAtendimentos) * 100, "%", ((double) qtdServicoTipo3 / qtdAtendimentos) * 100, "%");
         System.out.println("\n##################################################");
 
+        //Imprime na tela o valor total arrecadado
+
         System.out.println("##################################################\n");
         System.out.printf("Valor total arrecadado: R$ %.2f%n", valorTotalArrecadado);
         System.out.println("\n##################################################");
+
+        //Compara e imprime na tela qual(is) o(s) tipo(s) do veículo foi(foram) o(s) mais atendido(s)
 
         if (qtdVeiculoTipo1 > qtdVeiculoTipo2 && qtdVeiculoTipo1 > qtdVeiculoTipo3) {
             tipoVeiculoComMaiorQuantidade = "Tipo 1";
@@ -129,6 +160,8 @@ public class Main {
         System.out.println("##################################################\n");
         System.out.printf("Tipo(s) de veículo(s) mais atendido(s): %s%n", tipoVeiculoComMaiorQuantidade);
         System.out.println("\n##################################################");
+
+        //Compara e imprime na tela qual(is) o(s) serviço(s) foi(foram) o(s) mais atendido(s)
 
         if (qtdServicoTipo1 > qtdServicoTipo2 && qtdServicoTipo1 > qtdServicoTipo3) {
             servicoComMaiorQuantidade = "Lavação externa";
